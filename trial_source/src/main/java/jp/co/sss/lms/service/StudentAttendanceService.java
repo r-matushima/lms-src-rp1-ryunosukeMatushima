@@ -28,6 +28,7 @@ import jp.co.sss.lms.util.TrainingTime;
  * 
  * @author 東京ITスクール
  */
+
 @Service
 public class StudentAttendanceService {
 
@@ -333,22 +334,26 @@ public class StudentAttendanceService {
 		// 完了メッセージ
 		return messageUtil.getMessage(Constants.PROP_KEY_ATTENDANCE_UPDATE_NOTICE);
 	}
-	
-	public boolean notEnterCheck() throws ParseException{
+
+	/**
+	 * 過去日が未入力の場合の表示
+	 * @return boolean
+	 * @author 松島隆之助
+	 * @throws ParseException
+	 */
+
+	public boolean notEnterCheck() throws ParseException {
 		Date today = attendanceUtil.getTrainingDate();
-		Integer count = tStudentAttendanceMapper.notEnterCount(loginUserDto.getLmsUserId(), today, (short)0);
-		
-		boolean check = false ;
-		
-		System.out.println("デバッグ用："+count);
-		
-		if(count != null && count > 1) {
-		 check = true;
-		}
-		else {
+		Integer count = tStudentAttendanceMapper.notEnterCount(loginUserDto.getLmsUserId(), today, (short) 0);
+
+		boolean check = false;
+
+		if (count != null && count > 1) {
+			check = true;
+		} else {
 			check = false;
 		}
-		
+
 		return check;
 	}
 

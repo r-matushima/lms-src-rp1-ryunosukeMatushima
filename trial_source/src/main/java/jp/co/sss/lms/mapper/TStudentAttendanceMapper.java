@@ -65,7 +65,15 @@ public interface TStudentAttendanceMapper {
 	 */
 	Boolean update(TStudentAttendance tStudentAttendance);
 
+	/**
+	 * @author 松島隆之助
+	 * @param lmsUserId
+	 * @param trainingDate
+	 * @param deleteFlg
+	 * @return 未入力勤怠の数
+	 */
 	Integer notEnterCount(@Param("lmsUserId") Integer lmsUserId,
-			@Param("trainingDate") Date trainingDate, @Param("deleteFlg") Short deleteFlg);
+			@Param("trainingDate") Date trainingDate, 
+			@Param("deleteFlg") Short deleteFlg);
 	
 }

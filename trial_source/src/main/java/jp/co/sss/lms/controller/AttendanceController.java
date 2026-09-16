@@ -39,14 +39,15 @@ public class AttendanceController {
 	 * @return 勤怠管理画面
 	 * @throws ParseException
 	 */
+	//松島隆之助 Task25
 	@RequestMapping(path = "/detail", method = RequestMethod.GET)
-	public String index(Model model) throws ParseException{
+	public String index(Model model) throws ParseException {
 
 		// 勤怠一覧の取得
 		List<AttendanceManagementDto> attendanceManagementDtoList = studentAttendanceService
 				.getAttendanceManagement(loginUserDto.getCourseId(), loginUserDto.getLmsUserId());
 		model.addAttribute("attendanceManagementDtoList", attendanceManagementDtoList);
-		model.addAttribute("notEnterFlg",studentAttendanceService.notEnterCheck());
+		model.addAttribute("notEnterFlg", studentAttendanceService.notEnterCheck());
 
 		return "attendance/detail";
 	}
@@ -57,8 +58,10 @@ public class AttendanceController {
 	 * @param model
 	 * @return 勤怠管理画面
 	 */
+	
+	//松島隆之助 Task25
 	@RequestMapping(path = "/detail", params = "punchIn", method = RequestMethod.POST)
-	public String punchIn(Model model) throws ParseException{
+	public String punchIn(Model model) throws ParseException {
 
 		// 更新前のチェック
 		String error = studentAttendanceService.punchCheck(Constants.CODE_VAL_ATWORK);
@@ -72,7 +75,7 @@ public class AttendanceController {
 		List<AttendanceManagementDto> attendanceManagementDtoList = studentAttendanceService
 				.getAttendanceManagement(loginUserDto.getCourseId(), loginUserDto.getLmsUserId());
 		model.addAttribute("attendanceManagementDtoList", attendanceManagementDtoList);
-		model.addAttribute("notEnterFlg",studentAttendanceService.notEnterCheck());
+		model.addAttribute("notEnterFlg", studentAttendanceService.notEnterCheck());
 
 		return "attendance/detail";
 	}
@@ -84,7 +87,7 @@ public class AttendanceController {
 	 * @return 勤怠管理画面
 	 */
 	@RequestMapping(path = "/detail", params = "punchOut", method = RequestMethod.POST)
-	public String punchOut(Model model) throws ParseException{
+	public String punchOut(Model model) throws ParseException {
 
 		// 更新前のチェック
 		String error = studentAttendanceService.punchCheck(Constants.CODE_VAL_LEAVING);
@@ -98,8 +101,8 @@ public class AttendanceController {
 		List<AttendanceManagementDto> attendanceManagementDtoList = studentAttendanceService
 				.getAttendanceManagement(loginUserDto.getCourseId(), loginUserDto.getLmsUserId());
 		model.addAttribute("attendanceManagementDtoList", attendanceManagementDtoList);
-		model.addAttribute("notEnterFlg",studentAttendanceService.notEnterCheck());
-		
+		model.addAttribute("notEnterFlg", studentAttendanceService.notEnterCheck());
+
 		return "attendance/detail";
 	}
 
