@@ -71,6 +71,21 @@
 				</tbody>
 			</table>
 		</div>
+		
+		<div class="modal fade" id="div-modal">
+			<div class="modal-dialog modal-dialog-center">
+				<div class="modal-content">
+					<div class="modal-body">
+						
+							<p>localhost:8080の内容</p>
+							<p>未入力の勤怠情報があります</p>
+							<div style="text-align: right;">
+						<button type="button" data-dismiss="modal"  class="btn btn-primary"  >OK</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<script type="text/javascript" th:inline="javascript">
@@ -86,6 +101,15 @@
 			const minutes = ('0' + today.getMinutes()).slice(-2);
 			return hours + ':' + minutes;
 		}
+		
+		window.onload = function(){
+			let notEnterFlg =  /*[[${notEnterFlg}]]*/ false;
+			
+			
+			if(notEnterFlg == true){
+				$('#div-modal').modal('show');
+			}
+		};
 	</script>
 
 </body>

@@ -339,11 +339,14 @@ public class StudentAttendanceService {
 		Integer count = tStudentAttendanceMapper.notEnterCount(loginUserDto.getLmsUserId(), today, (short)0);
 		
 		boolean check = false ;
-		if(count <= 0) {
-		 check = false;
+		
+		System.out.println("デバッグ用："+count);
+		
+		if(count != null && count > 1) {
+		 check = true;
 		}
-		else if(count > 0) {
-			check = true;
+		else {
+			check = false;
 		}
 		
 		return check;
