@@ -343,14 +343,9 @@ public class StudentAttendanceService {
 	 */
 	public boolean notEnterCheck() throws ParseException {
 		Date today = attendanceUtil.getTrainingDate();
-		Integer count = tStudentAttendanceMapper.notEnterCount(loginUserDto.getLmsUserId(), today, (short) 0);
-		List<AttendanceManagementDto> debugList = tStudentAttendanceMapper.debugCounterDisolve(loginUserDto.getLmsUserId(), today, (short) 0);
-
+		Integer count = tStudentAttendanceMapper.notEnterCount(loginUserDto.getLmsUserId(), today, Constants.DB_FLG_FALSE);
 		boolean check = false;
 		
-		
-		System.out.println("デバック："+debugList);
-		System.out.println("デバックcount："+count);
 		if (count != null && count > 0) {
 			check = true;
 		} else {

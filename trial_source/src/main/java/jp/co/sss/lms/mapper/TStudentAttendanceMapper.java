@@ -76,9 +76,4 @@ public interface TStudentAttendanceMapper {
 			@Param("trainingDate") Date trainingDate, 
 			@Param("deleteFlg") Short deleteFlg);
 	
-	List<AttendanceManagementDto> debugCounterDisolve(@Param("lmsUserId") Integer lmsUserId,
-			@Param("trainingDate") Date trainingDate, 
-			@Param("deleteFlg") Short deleteFlg);
-	
-	
 }
