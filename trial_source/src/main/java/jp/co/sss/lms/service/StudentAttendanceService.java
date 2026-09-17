@@ -338,17 +338,20 @@ public class StudentAttendanceService {
 	/**
 	 * 過去日が未入力の場合の表示
 	 * @return boolean
-	 * @author 松島隆之助
+	 * @author 松島隆之助 - Task25
 	 * @throws ParseException
 	 */
-
 	public boolean notEnterCheck() throws ParseException {
 		Date today = attendanceUtil.getTrainingDate();
 		Integer count = tStudentAttendanceMapper.notEnterCount(loginUserDto.getLmsUserId(), today, (short) 0);
+		List<AttendanceManagementDto> debugList = tStudentAttendanceMapper.debugCounterDisolve(loginUserDto.getLmsUserId(), today, (short) 0);
 
 		boolean check = false;
-
-		if (count != null && count > 1) {
+		
+		
+		System.out.println("デバック："+debugList);
+		System.out.println("デバックcount："+count);
+		if (count != null && count > 0) {
 			check = true;
 		} else {
 			check = false;
